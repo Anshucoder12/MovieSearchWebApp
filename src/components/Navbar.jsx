@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Navbar.css";
 
 export default function Navbar({ setPage, setSearchQuery, darkMode, setDarkMode }) {
   const [input, setInput] = useState("");
@@ -11,31 +12,27 @@ export default function Navbar({ setPage, setSearchQuery, darkMode, setDarkMode 
   };
 
   return (
-    <nav className="flex justify-between items-center p-4 bg-indigo-600 dark:bg-indigo-800 text-white shadow-lg">
-      <h1
-        onClick={() => setPage("home")}
-        className="text-xl font-bold cursor-pointer"
-      >
+    <nav className={`navbar ${darkMode ? "dark" : ""}`}>
+      <h1 className="logo" onClick={() => setPage("home")}>
         🎬 MovieSearch
       </h1>
-      <form onSubmit={handleSearch} className="flex">
+
+      <form className="search-form" onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="Search movies..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="px-3 py-1 rounded-l-lg text-black"
+          className="search-input"
         />
-        <button type="submit" className="bg-yellow-500 px-4 rounded-r-lg">
+        <button type="submit" className="search-button">
           Search
         </button>
       </form>
-      <div className="flex items-center gap-4">
+
+      <div className="actions">
         <button onClick={() => setPage("watchlist")}>⭐ Watchlist</button>
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="bg-gray-700 px-2 py-1 rounded"
-        >
+        <button className="dark-mode-btn" onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? "☀️" : "🌙"}
         </button>
       </div>

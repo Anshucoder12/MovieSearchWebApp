@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import MovieModal from "./MovieModal";
+import "./Watchlist.css";
 
 export default function Watchlist() {
   const [watchlist, setWatchlist] = useState([]);
@@ -12,17 +13,21 @@ export default function Watchlist() {
   }, []);
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">⭐ Your Watchlist</h2>
+    <div className="watchlist-container">
+      <h2 className="watchlist-title">⭐ Your Watchlist</h2>
+
       {watchlist.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="movie-grid">
           {watchlist.map((movie) => (
             <MovieCard key={movie.imdbID} movie={movie} onClick={setSelectedMovie} />
           ))}
         </div>
       ) : (
-        <p>No movies in watchlist yet 🎬</p>
+        <p className="empty-state">
+          🎬 No movies in your watchlist yet. Start adding some!
+        </p>
       )}
+
       {selectedMovie && (
         <MovieModal imdbID={selectedMovie} onClose={() => setSelectedMovie(null)} />
       )}

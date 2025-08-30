@@ -1,0 +1,47 @@
+.movie-card {
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .movie-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .movie-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 8px;
+  }
+  
+  .movie-year {
+    color: #6b7280;
+    padding: 0 8px 8px;
+  }
+  
+  .add-watchlist-btn {
+    margin: 8px;
+    padding: 6px 12px;
+    background-color: #facc15;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+  }
+  
+  .add-watchlist-btn:hover {
+    opacity: 0.9;
+  }
+  

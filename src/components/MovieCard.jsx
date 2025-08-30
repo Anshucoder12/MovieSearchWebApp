@@ -1,20 +1,24 @@
-export default function MovieCard({ movie, onClick }) {
+import "./MovieCard.css";
+
+export default function MovieCard({ movie, onClick, onAddToWatchlist }) {
   return (
-    <div
-      onClick={() => onClick(movie.imdbID)}
-      className="bg-white dark:bg-gray-800 rounded-lg shadow hover:scale-105 transition cursor-pointer"
-    >
+    <div className="movie-card">
       <img
-        src={movie.Poster !== "N/A" ? movie.Poster : "/no-image.png"}
+        src={movie.Poster}
         alt={movie.Title}
-        className="rounded-t-lg w-full h-64 object-cover"
+        onClick={() => onClick(movie.imdbID)}
       />
-      <div className="p-3">
-        <h2 className="font-bold">{movie.Title}</h2>
-        <p className="text-sm text-gray-600 dark:text-gray-300">
-          {movie.Year} • {movie.Type}
-        </p>
-      </div>
+      <h3 className="movie-title">{movie.Title}</h3>
+      <p className="movie-year">{movie.Year}</p>
+
+      {onAddToWatchlist && (
+        <button
+          className="add-watchlist-btn"
+          onClick={() => onAddToWatchlist(movie)}
+        >
+          ⭐ Add to Watchlist
+        </button>
+      )}
     </div>
   );
 }
